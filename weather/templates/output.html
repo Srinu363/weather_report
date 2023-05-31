@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather Report</title>
+    <link rel="stylesheet" type='text/css' href="{{url_for('static',filename='output1style.css')}}">
+</head>
+<body>
+	<h1>Weather Report for {{ city }}</h1>
+	<p><strong>Humidity:</strong> {{ humidity }}%</p>
+	<p><strong>Weather:</strong> {{ weather }}</p>
+	<p><strong>Temperature:</strong> {{ temp }} &#8451;</p>
+	<p><strong>Wind Speed:</strong> {{ wind_speed }} m/s</p>
+	<p><strong>Local Time:</strong> {{ local_time }}</p>
+</

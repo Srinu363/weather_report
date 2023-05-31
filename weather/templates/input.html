@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+      <form action="/weather" method="post">
+      <label for="city">Enter a city name:</label>
+      <input type="text" id="city" name="city" required>
+      <input type="submit" value="Get Weather">
+    </form>
+  </body>
+</html>

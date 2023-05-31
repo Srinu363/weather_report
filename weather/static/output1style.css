@@ -1,0 +1,46 @@
+body {
+    background-image: url('sunrisesnowpixel.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #303841;
+    margin-top: 3rem;
+    text-align: center;
+    text-shadow: 2px 2px #FBB13C;
+    animation: blink 1s ease-in-out infinite alternate;
+}
+
+p {
+    font-size: 2rem;
+    color: #303841;
+    margin: 2rem;
+    text-align: center;
+    text-shadow: 1px 1px #a77415;
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

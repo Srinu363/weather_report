@@ -1,0 +1,33 @@
+/* Define the styles for the heading */
+body {
+  background-image: url('citynot.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+h1 {
+    font-size: 48px;
+    text-align: center;
+    color: #333;
+    margin-top: 100px;
+    animation-name: heading-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  /* Define the animation */
+  @keyframes heading-animation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
