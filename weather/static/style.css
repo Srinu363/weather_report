@@ -9,6 +9,7 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
   font-size: 50px;
   color: aqua;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 form {
@@ -21,6 +22,7 @@ form {
 label {
   font-size: 24px;
   margin-bottom: 20px;
+  color: white;
 }
 
 input[type="text"] {
@@ -42,6 +44,11 @@ input[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
 input[type="submit"]:active {
@@ -58,11 +65,64 @@ input[type="submit"]:active {
 .weather-info p {
   font-size: 24px;
   margin-bottom: 20px;
+  color: white;
 }
 
 a {
   display: block;
   margin-top: 20px;
   text-align: center;
+  text-decoration: none;
+  color: aqua;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
 }
-  
+
+a:hover {
+  color: #00e6e6;
+}
+
+button[type="submit"] {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="submit"]:active {
+  background-color: green;
+}
+
+.previous-data-btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.previous-data-btn a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #24e11e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.previous-data-btn a:hover {
+  background-color: #44c624;
+}

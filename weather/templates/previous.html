@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Previous Weather Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='previous.css') }}">
+</head>
+<body>
+    <h1>Previous Weather Data</h1>
+    <table>
+        <tr>
+            <th>City</th>
+            <th>Weather</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity</th>
+            <th>Wind Speed</th>
+            <th>Local Time</th>
+        </tr>
+        {% for data in weather_data %}
+            <tr>
+                <td>{{ data.city }}</td>
+                <td>{{ data.weather }}</td>
+                <td>{{ data.temp }}</td>
+                <td>{{ data.humidity }}</td>
+                <td>{{ data.wind_speed }}</td>
+                <td>{{ data.local_time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

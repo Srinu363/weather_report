@@ -1,8 +1,7 @@
 body {
-    background-image: url('sunrisesnowpixel.jpg');
+    font-family: Arial, sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: Arial, sans-serif;
 }
 
 h1 {
@@ -44,3 +43,45 @@ p {
         opacity: 1;
     }
 }
+
+body.weather-clear,
+body.weather-broken-clouds,
+body.weather-moderate-rain,
+body.weather-light-snow,
+body.weather-scattered-clouds,
+body.sunrisesnowpixel {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Set background images based on weather conditions */
+body.weather-clear {
+    background-image: url('clearsky.jpg');
+}
+
+body.weather-broken-clouds {
+    background-image: url('brokenclouds.jpg');
+}
+
+body.weather-moderate-rain {
+    background-image: url('modraterain.jpg');
+}
+
+body.weather-light-snow {
+    background-image: url('lightsnow.jpg');
+}
+
+body.weather-scattered-clouds {
+    background-image: url('scatteredclouds.jpg');
+}
+body.weather-clear-sky {
+    background-image: url('clearsky.webp');
+}
+body.weather-light-rain {
+    background-image: url('lightrain.jpg');
+}
+
+body.sunrisesnowpixel {
+    background-image: url('sunrisesnowpixel.jpg');
+}
+

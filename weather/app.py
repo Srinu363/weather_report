@@ -12,7 +12,6 @@ collection = db['weather']
 
 # API key to access OpenWeatherMap API
 api_key = 'f77b28787c5b189e0ba8d333a6ac8205'
-
 @app.route('/')
 def home():
     # Render the input.html template when the user navigates to the home page
@@ -22,20 +21,36 @@ def home():
 def get_weather():
     # Get the name of the city that the user entered in the form
     city = request.form['city']
-    
+
     # Construct the URL for the OpenWeatherMap API request using the city name and API key
     weather_url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
-    
+
     # Send the HTTP GET request to the OpenWeatherMap API and get the response
     weather_response = requests.get(weather_url)
 
-    if weather_response.status_code ==200: # if the OpenWeatherMap API request was successful
+    if weather_response.status_code == 200:  # if the OpenWeatherMap API request was successful
         # Extract the relevant weather data from the JSON response
         weather_data = weather_response.json()
-        weather = weather_data['weather'][0]['description']
+        weather = weather_data['weather'][0]['description'].lower()  # Convert to lowercase
         temp = round(weather_data['main']['temp'] - 273.15, 2)  # Convert to Celsius
         humidity = weather_data['main']['humidity']
         wind_speed = weather_data['wind']['speed']
+
+        # Determine the background class based on the weather condition
+        if 'broken clouds' in weather:
+            background_class = 'weather-broken-clouds'
+        elif 'moderate rain' in weather:
+            background_class = 'weather-moderate-rain'
+        elif 'light snow' in weather:
+            background_class = 'weather-light-snow'
+        elif 'scattered clouds' in weather:
+            background_class = 'weather-scattered-clouds'
+        elif 'clear sky' in weather:
+            background_class = 'weather-clear-sky'
+        elif 'light rain' in weather:
+            background_class = 'weather-light-rain'
+        else:
+            background_class = 'sunrisesnowpixel'  # Set a default class if the weather condition is unknown
 
         # Construct the URL for the time zone API request using the city name and API key
         timezone_url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
@@ -43,11 +58,11 @@ def get_weather():
         # Send the HTTP GET request to the time zone API and get the response
         timezone_response = requests.get(timezone_url)
 
-        if timezone_response.status_code == 200: # if the time zone API request was successful
+        if timezone_response.status_code == 200:  # if the time zone API request was successful
             # Extract the relevant time zone data from the JSON response
             timezone_data = timezone_response.json()
             timezone_offset = timezone_data['timezone']
-            
+
             # Get the current UTC time
             current_time_utc = datetime.utcnow()
 
@@ -66,7 +81,7 @@ def get_weather():
             collection.insert_one(weather_doc)
 
             # Render the output.html template with the weather and time data to display to the user
-            return render_template('output.html', city=city, weather=weather, temp=temp, humidity=humidity, wind_speed=wind_speed, local_time=local_time)
+            return render_template('output.html', city=city, weather=weather, temp=temp, humidity=humidity,wind_speed=wind_speed, local_time=local_time, background_class=background_class)
         else:
             # If the time zone API request was unsuccessful, display an error message to the user
             return "Time zone data not found."
@@ -74,8 +89,15 @@ def get_weather():
         # If the OpenWeatherMap API request was unsuccessful, display an error message to the user
         return render_template('citynotfound.html')
 
+@app.route('/previous')
+def previous_data():
+    # Retrieve all the weather documents from the MongoDB collection
+    weather_data = collection.find()
+
+    # Render the previous_data.html template with the weather data
+    return render_template('previous.html', weather_data=weather_data)
+
 
 if __name__ == '__main__':
     # Start the Flask application in debug mode
     app.run(debug=True)
-
