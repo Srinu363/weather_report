@@ -2,7 +2,7 @@
 
 A full-stack **Flask web application** that fetches real-time weather and local time for any city using the **OpenWeatherMap API**. The app stores historical weather data in **MongoDB**, allowing users to revisit previous searches.  
 
-![Weather App Preview]()  
+![Weather App Preview](https://github.com/Srinu363/weather_report/blob/main/weather/static/light%20snow.jpg)  
 *(Sample UI: replace with your own screenshot)*  
 
 ---
